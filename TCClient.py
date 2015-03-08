@@ -23,6 +23,8 @@ class TCClient:
         return json_data
 
     def get_build_ids_by_build_type(self, build_type, builds_data):
+        if not 'build' in in builds_data:
+            return []
         result = list(map(lambda build: build['id'],
                           filter(lambda build: build['buildTypeId'] == build_type, builds_data['build'])))
         return result
